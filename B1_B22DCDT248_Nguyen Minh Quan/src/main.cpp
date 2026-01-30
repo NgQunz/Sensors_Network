@@ -17,7 +17,7 @@ void loop()
   float temp = dht.readTemperature();
   if (isnan(humi) || isnan(temp))
   {
-    Serial.println("Doc DHT11 that bai");
+    Serial.println("Error");
     delay(2000);
     return;
   }
