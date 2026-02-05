@@ -1,30 +1,28 @@
 #include <Arduino.h>
 #include "DHT.h"
 
-#define DHTPIN 4
-#define DHTTYPE DHT11
-DHT dht(DHTPIN, DHTTYPE);
+DHT Dht11(4, DHT11);
 
 void setup()
 {
   Serial.begin(9600);
-  dht.begin();
+  Dht11.begin();
 }
 
 void loop()
 {
-  float humi = dht.readHumidity();
-  float temp = dht.readTemperature();
-  if (isnan(humi) || isnan(temp))
+  float do_am = Dht11.readHumidity();
+  float nhiet_do = Dht11.readTemperature();
+  if (isnan(do_am) || isnan(nhiet_do))
   {
     Serial.println("Error");
     delay(2000);
     return;
   }
   Serial.print("Nhiet do: ");
-  Serial.print(temp);
+  Serial.print(nhiet_do);
   Serial.print(" °C | Do am: ");
-  Serial.print(humi);
+  Serial.print(do_am);
   Serial.println(" %");
   delay(2000);
 }
