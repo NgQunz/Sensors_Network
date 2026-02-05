@@ -9,7 +9,7 @@ MFRC522 rfid(SS_PIN, RST_PIN);
 void setup()
 {
     Serial.begin(9600);
-    SPI.begin(18, 19, 23, 5); // SCK, MISO, MOSI, SS
+    SPI.begin(18, 19, 23, 5);
     rfid.PCD_Init();
     Serial.println("RFID ready");
 }
@@ -20,7 +20,6 @@ void loop()
         return;
     if (!rfid.PICC_ReadCardSerial())
         return;
-
     Serial.print("UID: ");
     for (byte i = 0; i < rfid.uid.size; i++)
     {
@@ -29,6 +28,5 @@ void loop()
         Serial.print(" ");
     }
     Serial.println();
-
     rfid.PICC_HaltA();
 }
