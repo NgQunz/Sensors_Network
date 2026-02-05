@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "DHT.h"
 
-DHT Dht11(4, DHT11);
+DHT Dht11(16, DHT11);
 
 void setup()
 {
